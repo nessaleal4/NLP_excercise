@@ -7,8 +7,14 @@ import tempfile
 import os
 from bs4 import BeautifulSoup
 
-# Load spaCy model
-nlp = spacy.load("en_core_web_sm")
+# Ensure spaCy model is downloaded
+spacy_model = "en_core_web_sm"
+
+try:
+    nlp = spacy.load(spacy_model)
+except OSError:
+    os.system(f"python -m spacy download {spacy_model}")  # Force download
+    nlp = spacy.load(spacy_model)  # Reload model
 
 def extract_text_from_pdf(pdf_file):
     """Extract text from uploaded PDF"""
