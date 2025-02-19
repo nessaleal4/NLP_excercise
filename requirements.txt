@@ -3,4 +3,5 @@ spacy
 networkx
 pyvis
 pymupdf
+spacy[lookups]
 beautifulsoup4
